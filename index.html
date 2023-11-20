@@ -33,6 +33,7 @@
         fetch('https://resources.deepspace.game/api')
             .then(response => response.json())
             .then(data => {
+		console.log(data);
                 const tableBody = document.getElementById('data');
                 data.forEach(item => {
                     let resourceType = '';
@@ -90,8 +91,7 @@ Learn more at: <a href="https://deepspace.game">https://deepspace.game</a><br/>
 Buy DEEPSPACE (DPS) at: <a href="https://app.deepspace.game">https://app.deepspace.game</a>
 </p>
 	
-<p><i>Tip: Check the console log for the full JSON response from the token stat server</i></p>
-<p><i>Tip: Check out the Token Client Stats Dashboard: <a href="https://token.deepspace.game/dash">https://token.deepspace.game/dash</a></i></p>
+<p><i>Tip: Check the console log for the full JSON response from the resources api</i></p>
 <p>Pro Tip: Command Supported: <a href="https://resources.deepspace.game/api">https://resources.deepspace.game/api</a></p>
 <br/>
     <table>
