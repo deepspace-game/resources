@@ -30,7 +30,26 @@
         mediumFormatDecimal = d3.format(",.2f");
         largeFormatDecimal = d3.format(",.4f");
 
-        fetch('https://resources.deepspace.game/api')
+// Get the current URL
+const currentURL = window.location.href;
+let resourcesURL = ""
+
+// Check if the URL contains "resources.deepspace.game"
+if (currentURL.includes("resources.deepspace.game")) {
+  // Use the variable with a specific value
+  resourcesURL = "resources.deepspace.game";
+  console.log(resourcesURL);
+} else if (currentURL.includes("dev-resources.deepspace.game")) {
+  // Adjust the variable value for dev-resources.deepspace.game
+  resourcesURL = "dev-resources.deepspace.game";
+  console.log(resourcesURL);
+} else {
+  // Handle other cases if needed
+  resourcesURL = "resources.deepspace.game";
+  console.log("URL does not match expected patterns");
+}
+
+        fetch(resourcesURL)
             .then(response => response.json())
             .then(data => {
 		console.log(data);
@@ -100,7 +119,7 @@ Buy DEEPSPACE (DPS) at: <a href="https://app.deepspace.game">https://app.deepspa
                 <th>Resource Name</th>
                 <th>DPS Balance</th>
                 <th>Resource Balance</th>
-                <th>Price (USD)</th>
+                <th>Price (DPS)</th>
             </tr>
         </thead>
         <tbody id="data"></tbody>
