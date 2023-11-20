@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Space Resources</title>
+    <title>DEEPSPACE Resources Chart</title>
     <style>
         table {
             width: 100%;
@@ -23,22 +23,13 @@
             background-color: #f2f2f2;
         }
     </style>
-</head>
-<body>
-    <h1>Deep Space Resources</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Resource Name</th>
-                <th>DPS Balance</th>
-                <th>Resource Balance</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody id="data"></tbody>
-    </table>
+    <meta http-equiv="Pragma" content="no-cache">
+    <base target="_blank">
+    <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
+    <script type="text/javascript">
+        mediumFormatDecimal = d3.format(",.2f");
+        largeFormatDecimal = d3.format(",.4f");
 
-    <script>
         fetch('https://resources.deepspace.game/api')
             .then(response => response.json())
             .then(data => {
@@ -76,9 +67,9 @@
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${resourceType}</td>
-                        <td>${item.dpsBalance.toFixed(2)}</td>
+                        <td>${largeFormatDecimal(item.dpsBalance)}</td>
                         <td>${item.resourceBalance}</td>
-                        <td>${item.price.toFixed(2)}</td>
+                        <td>${mediumFormatDecimal(item.price)}</td>
                     `;
                     tableBody.appendChild(row);
                 });
@@ -87,5 +78,32 @@
                 console.error('Error fetching data:', error);
             });
     </script>
+</head>
+<body>
+<h1>DEEPSPACE Resources Chart</h1>
+<h2>About DEEPSPACE</h2>
+<p><b>Welcome to the DEEPSPACE Metaverse!</b><br/>
+DEEPSPACE is a Play-to-Earn space multiverse exploration strategy game!<br/>
+Earn passive income from holding $DPS, trading NFTs, and taking risks as you explore DEEPSPACE with your fleet of ships!<br/>
+Prepare to explore, harvest, and fight your way through the DEEPSPACE universe!<br/>
+Learn more at: <a href="https://deepspace.game">https://deepspace.game</a><br/>
+Buy DEEPSPACE (DPS) at: <a href="https://app.deepspace.game">https://app.deepspace.game</a>
+</p>
+	
+<p><i>Tip: Check the console log for the full JSON response from the token stat server</i></p>
+<p><i>Tip: Check out the Token Client Stats Dashboard: <a href="https://token.deepspace.game/dash">https://token.deepspace.game/dash</a></i></p>
+<p>Pro Tip: Command Supported: <a href="https://resources.deepspace.game/api">https://resources.deepspace.game/api</a></p>
+<br/>
+    <table>
+        <thead>
+            <tr>
+                <th>Resource Name</th>
+                <th>DPS Balance</th>
+                <th>Resource Balance</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="data"></tbody>
+    </table>
 </body>
 </html>
