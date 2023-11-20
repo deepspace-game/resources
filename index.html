@@ -37,15 +37,15 @@ let resourcesURL = ""
 // Check if the URL contains "resources.deepspace.game"
 if (currentURL.includes("resources.deepspace.game")) {
   // Use the variable with a specific value
-  resourcesURL = "resources.deepspace.game";
+  resourcesURL = "https://resources.deepspace.game/api";
   console.log(resourcesURL);
 } else if (currentURL.includes("dev-resources.deepspace.game")) {
   // Adjust the variable value for dev-resources.deepspace.game
-  resourcesURL = "dev-resources.deepspace.game";
+  resourcesURL = "https://dev-resources.deepspace.game/api";
   console.log(resourcesURL);
 } else {
   // Handle other cases if needed
-  resourcesURL = "resources.deepspace.game";
+  resourcesURL = "https://resources.deepspace.game/api";
   console.log("URL does not match expected patterns");
 }
 
