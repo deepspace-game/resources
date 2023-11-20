@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Space Resources</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Deep Space Resources</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Resource Name</th>
+                <th>DPS Balance</th>
+                <th>Resource Balance</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="data"></tbody>
+    </table>
+
+    <script>
+        fetch('https://resources.deepspace.game/api')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('data');
+                data.forEach(item => {
+                    let resourceType = '';
+                    switch (item.poolId) {
+                        case 0:
+                            resourceType = 'Iron';
+                            break;
+                        case 1:
+                            resourceType = 'Seplium';
+                            break;
+                        case 2:
+                            resourceType = 'Hydrogen';
+                            break;
+                        case 3:
+                            resourceType = 'Fenna';
+                            break;
+                        case 4:
+                            resourceType = 'Bedasine';
+                            break;
+                        case 5:
+                            resourceType = 'Netherite';
+                            break;
+                        case 6:
+                            resourceType = 'Xanifarium';
+                            break;
+                        case 7:
+                            resourceType = 'Promethium';
+                            break;
+                        default:
+                            resourceType = 'N/A';
+                    }
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${resourceType}</td>
+                        <td>${item.dpsBalance.toFixed(2)}</td>
+                        <td>${item.resourceBalance}</td>
+                        <td>${item.price.toFixed(2)}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
+</body>
+</html>
