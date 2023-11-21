@@ -88,7 +88,7 @@ if (currentURL.includes("resources.deepspace.game")) {
                     row.innerHTML = `
                         <td>${resourceType}</td>
                         <td>${largeFormatDecimal(item.dpsBalance)}</td>
-                        <td>${item.resourceBalance}</td>
+                        <td>${mediumFormatDecimal(item.resourceBalance)}</td>
                         <td>${mediumFormatDecimal(item.price)}</td>
                     `;
                     tableBody.appendChild(row);
