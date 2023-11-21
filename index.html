@@ -27,7 +27,8 @@
     <base target="_blank">
     <script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
     <script type="text/javascript">
-        mediumFormatDecimal = d3.format(",.2f");
+        noFormatDecimal = d3.format(",.0f");
+	mediumFormatDecimal = d3.format(",.2f");
         largeFormatDecimal = d3.format(",.4f");
 
 // Get the current URL
@@ -88,7 +89,7 @@ if (currentURL.includes("resources.deepspace.game")) {
                     row.innerHTML = `
                         <td>${resourceType}</td>
                         <td>${largeFormatDecimal(item.dpsBalance)}</td>
-                        <td>${mediumFormatDecimal(item.resourceBalance)}</td>
+                        <td>${noFormatDecimal(item.resourceBalance)}</td>
                         <td>${mediumFormatDecimal(item.price)}</td>
                     `;
                     tableBody.appendChild(row);
