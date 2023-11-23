@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEEPSPACE Resources Chart</title>
     <style>
-        .charts-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columns for charts */
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+	.charts-container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr); /* 4 columns for larger screens */
+		gap: 10px;
+		margin-bottom: 20px;
+	}
         iframe {
             border: 2px solid #ddd;
             box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -33,6 +33,12 @@
         th {
             background-color: #f2f2f2;
         }
+	/* Media Query for Mobile Screens */
+	@media screen and (max-width: 600px) {
+		.charts-container {
+		    grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile screens */
+		}
+	}
     </style>
     <meta http-equiv="Pragma" content="no-cache">
     <base target="_blank">
